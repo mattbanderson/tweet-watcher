@@ -1,4 +1,4 @@
-# Tweet-Scraper
+# Tweet-Watcher
 
 A simple node app for retrieving an individual user's tweets using Twitter's advanced search.
 
