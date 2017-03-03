@@ -48,7 +48,7 @@ function checkTweets() {
           const exists = db.get('tweets').find({ id: tweet.id }).value();
           if (!exists) {
             console.log('New tweet(s) found!');
-            translate(tweet.text, {from: 'en', to: 'ru'}).then(res => {
+            translate(tweet.text, {from: config.sourceLanguage, to: config.targetLanguage}).then(res => {
               console.log(tweet.id);
               console.log(tweet.text);
               console.log(res.text);
