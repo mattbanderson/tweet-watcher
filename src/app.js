@@ -32,7 +32,7 @@ function sendEmail(emailText) {
 }
 
 function checkTweets() {
-  request(config.url, function(error, response, html) {
+  request(config.searchUrl, function(error, response, html) {
     console.log('Checking for new tweets...');
     if (!error){
       const $ = cheerio.load(html);
@@ -63,4 +63,4 @@ function checkTweets() {
   })
 }
 
-setInterval(checkTweets, 5000);
+setInterval(checkTweets, config.refreshInterval);
