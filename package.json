@@ -1,0 +1,17 @@
+{
+  "name": "tweet-scraper",
+  "version": "0.0.1",
+  "description": "Scrape some Tweets.",
+  "main": "app.js",
+  "author": "Matt Anderson",
+  "dependencies": {
+    "cheerio": "latest",
+    "google-translate-api": "^2.2.2",
+    "lowdb": "^0.15.5",
+    "nodemailer": "^3.1.4",
+    "request": "latest"
+  },
+  "scripts": {
+    "start": "node src/app"
+  }
+}
