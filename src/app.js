@@ -6,12 +6,14 @@ const util = require('util');
 const cheerio = require('cheerio');
 const translate = require('google-translate-api');
 const low = require('lowdb');
+const Encoder = require('node-html-encoder').Encoder;
 const mailer = require('./mailer');
 const cfg = require('./config/config');
 const secrets = require('./config/config.secrets');
 
 const config = Object.assign({}, cfg, secrets);
 const db = low('db.json', { storage: require('lowdb/lib/storages/file-async') });
+const encoder = new Encoder('entity');
 db.defaults({ tweets: []}).write();
 
 function sendEmail(emailText) {
@@ -53,7 +55,7 @@ function checkTweets() {
               console.log(tweet.text);
               console.log(res.text);
               db.get('tweets').push({id: tweet.id, url: tweet.url, text: tweet.text, ru: res.text}).write();
-              sendEmail(util.format('%s <a href="%s" target="_blank">%s</a>', res.text, tweet.url, tweet.url));
+              sendEmail(util.format('%s <a href="%s" target="_blank">%s</a>', encoder.htmlEncode(res.text), tweet.url, tweet.url));
             }).catch(err => {
               console.error(err);
             });

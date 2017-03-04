@@ -8,6 +8,7 @@
     "cheerio": "latest",
     "google-translate-api": "^2.2.2",
     "lowdb": "^0.15.5",
+    "node-html-encoder": "0.0.2",
     "nodemailer": "^3.1.4",
     "request": "latest"
   },
