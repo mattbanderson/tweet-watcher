@@ -6,6 +6,7 @@
   "author": "Matt Anderson",
   "dependencies": {
     "cheerio": "latest",
+    "dateformat": "^2.0.0",
     "google-translate-api": "^2.2.2",
     "lowdb": "^0.15.5",
     "node-html-encoder": "0.0.2",

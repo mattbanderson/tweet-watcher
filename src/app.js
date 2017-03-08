@@ -7,6 +7,7 @@ const cheerio = require('cheerio');
 const translate = require('google-translate-api');
 const low = require('lowdb');
 const Encoder = require('node-html-encoder').Encoder;
+const dateFormat = require('dateformat');
 const mailer = require('./mailer');
 const cfg = require('./config/config');
 const secrets = require('./config/config.secrets');
@@ -51,7 +52,7 @@ function checkTweets() {
           if (!exists) {
             console.log('New tweet(s) found!');
             translate(tweet.text, {from: config.sourceLanguage, to: config.targetLanguage}).then(res => {
-              console.log(tweet.id);
+              console.log(dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT"));
               console.log(tweet.text);
               console.log(res.text);
               db.get('tweets').push({id: tweet.id, url: tweet.url, text: tweet.text, ru: res.text}).write();
